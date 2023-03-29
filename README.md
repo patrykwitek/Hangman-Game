@@ -1,6 +1,6 @@
 # Hangman Game
 
-Gangman game made in C# console. Application draws word for player to guess. Player guesses a letter, he has got 6 chances.
+Hangman game made in C# console. Application draws word for player to guess. Player guesses a letter, he has got 6 chances.
 
 Preview:
 
