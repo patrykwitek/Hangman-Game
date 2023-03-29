@@ -18,11 +18,42 @@ namespace HangmanGame
             List<string> suggestions = new List<string>();
             suggestions.Add("CSHARP");
             suggestions.Add("SUMMER");
+            suggestions.Add("ROMANTIC");
+            suggestions.Add("SUN");
+            suggestions.Add("RICE");
+            suggestions.Add("AWFUL");
+            suggestions.Add("BRIDGE");
+            suggestions.Add("RUNNING");
+            suggestions.Add("HAPPINESS");
+            suggestions.Add("BASKETBALL");
+            suggestions.Add("JUNGLE");
+            suggestions.Add("RAINING");
+            suggestions.Add("BREAD");
+            suggestions.Add("LEMONADE");
+            suggestions.Add("TEMPTATION");
+            suggestions.Add("HANGMAN");
+            suggestions.Add("TACTIC");
+            suggestions.Add("TUESDAY");
+            suggestions.Add("HOPE");
+            suggestions.Add("EGYPTIAN");
+            suggestions.Add("DOUGH");
+            suggestions.Add("INFINITY");
+            suggestions.Add("SITUATION");
+            suggestions.Add("CHANCE");
+            suggestions.Add("LESSON");
+            suggestions.Add("SPACESHIP");
+            suggestions.Add("MANNEQUIN");
+            suggestions.Add("TOGETHER");
+            suggestions.Add("COFFEE");
+            suggestions.Add("FRIEND");
+            suggestions.Add("STARS");
+            suggestions.Add("ROBBERY");
+            suggestions.Add("PARADISE");
 
             Random random = new Random();
             Word = suggestions[random.Next(suggestions.Count())];
 
-            Attempts_left = Word.Length;
+            Attempts_left = 6;
 
             Guessed = "";
             for (int i = 0; i < Word.Length; i++)
@@ -41,7 +72,7 @@ namespace HangmanGame
 
             Console.WriteLine(Guessed);
             Console.WriteLine();
-            Console.WriteLine("Attempts left: " + Program.Attempts_left);
+            Console.WriteLine("Attempts left: " + Attempts_left);
             Console.WriteLine();
             Console.WriteLine("---------------------------");
             Console.WriteLine();
@@ -121,6 +152,7 @@ namespace HangmanGame
                     }
                 } while (validation || attempt.Equals(""));
 
+                Char.ToUpper(attempt);
                 correct = false;
 
                 for (int i = 0; i < Word.Length; i++)
@@ -130,7 +162,7 @@ namespace HangmanGame
                         Guessed = Guessed.Substring(0, i) + attempt + Guessed.Substring(i + 1);
                         correct = true;
                     }
-                    else if (Word[i] == attempt && !Guessed[i].Equals('_'))
+                    else if ((Word[i] == attempt && !Guessed[i].Equals('_')) || Mistakes.Contains(attempt))
                     {
                         Console.WriteLine("---------------------------");
                         Console.WriteLine(" You tried this one before ");
@@ -140,7 +172,7 @@ namespace HangmanGame
                         break;
                     }
 
-                    if(i == Word.Length - 1 && !correct && !Mistakes.Contains(attempt))
+                    if(i == Word.Length - 1 && !correct)
                     {
                         Attempts_left--;
                         Mistakes.Add(attempt);
